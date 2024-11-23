@@ -9,7 +9,15 @@ import matplotlib.pyplot as plt
 import streamlit as st
 print('streamlit模块导入完成')
 
-plt.rcParams ['font.sans-serif'] ='SimHei'               #显示中文
+from matplotlib.font_manager import FontProperties
+
+# 指定字体路径
+font_path = 'SimHei.ttf'  # 替换为你的字体文件路径
+font_prop = FontProperties(fname=font_path)
+# 设置全局字体
+plt.rcParams['font.family'] = font_prop.get_name()
+
+###plt.rcParams ['font.sans-serif'] ='SimHei'               #显示中文
 plt.rcParams ['axes.unicode_minus']=False               #显示负号
 
 os.environ["STREAMLIT_LOG_LEVEL"] = "error"  # 只显示错误信息
