@@ -5,5 +5,5 @@ pandas==1.5.3
 seaborn==0.13.2
 streamlit==1.40.0
 xgboost==2.0.3
-skleran==1.5.0
+scikit-learn==1.5.0
 
