@@ -12,15 +12,25 @@ print('streamlit模块导入完成')
 from matplotlib.font_manager import FontProperties
 
 # 指定字体路径
-font_path = 'SimHei.ttf'  # 替换为你的字体文件路径
+app_path = os.path.dirname(os.path.abspath(__file__))
+font_path = os.path.join(app_path, 'SimHei.ttf')  # 结合 app 路径和字体文件名
+
+# 确保字体路径是正确的
+if not os.path.exists(font_path):
+    raise FileNotFoundError(f"Font file not found: {font_path}")
+
+# 设置字体属性
 font_prop = FontProperties(fname=font_path)
+
 # 设置全局字体
 plt.rcParams['font.family'] = font_prop.get_name()
 
-###plt.rcParams ['font.sans-serif'] ='SimHei'               #显示中文
-plt.rcParams ['axes.unicode_minus']=False               #显示负号
+# 用于显示中文和负号
+plt.rcParams['font.sans-serif'] = [font_prop.get_name()]
+plt.rcParams['axes.unicode_minus'] = False
 
 os.environ["STREAMLIT_LOG_LEVEL"] = "error"  # 只显示错误信息
+
 
 
 # 环境判断
